@@ -1,15 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A web application for sharing bookmarks with persistence using localStorage.">
   <title>Shared Bookmarks</title>
-</head>
 <link rel="stylesheet" href="style.css">
+</head>
+
 <body>
-  /*---------scripts---------*/
+  <main id="main-content">
+
+      <div id="user-selection-section">
+        <label for="user-select">Select User</label>
+        <select  id="user-select">
+          <!-- User options will be dynamically inserted here -->
+        </select>
+    </div>
+
+
+    <div id="bookmark-section">
+      <div>
+        <section id="add-bookmark-section">
+          <h2>Add a New Bookmark</h2>
+          <form id="add-bookmark-form">
+            <label for="bookmark-title">Bookmark Title</label>
+            <input type="text" id="bookmark-title" name="title" required >
+            <label for="bookmark-url">Bookmark URL</label>
+            <input type="url" id="bookmark-url" name="url" required >
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description" required >
+            <button id="submit-bookmark" type="submit">Add Bookmark</button>
+          </form>
+        </section>
+      </div>
+
+      <div>
+        <section id="bookmark-list-section">
+          <h1>Shared Bookmarks</h1>
+          <ul id="bookmark-list">
+            <!-- Bookmarks will be dynamically inserted here -->
+          </ul>
+        </section>
+      </div>
+    </div>
+
+  </main>
+
+
+
   <script type="module" src="script.mjs"></script>
-  <script type="module" src="storage.mjs"></script>
 </body>
+
 </html>

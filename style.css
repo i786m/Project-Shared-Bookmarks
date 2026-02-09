@@ -212,7 +212,7 @@ body {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-#bookmark-list-id a {
+.bookmark-list-item a {
       font-size: 18px;
       font-weight: 600;
       color: #256dda;
@@ -223,16 +223,16 @@ body {
       margin-bottom: 8px;
 }
 
-#bookmark-list-id a .link-icon {
+.bookmark-list-item a .link-icon {
       flex-shrink: 0;
 }
 
-#bookmark-list-id a:hover {
+.bookmark-list-item a:hover {
       text-decoration: underline;
       color: #1a4fa3;
 }
 
-#bookmark-list-id p {
+.bookmark-list-item p {
       margin: 0;
       color: #666;
       font-size: 14px;
@@ -247,7 +247,7 @@ body {
 }
 
 
-#bookmark-list-id {
+.bookmark-list-item {
       position: relative;
       padding-bottom: 45px;
 }

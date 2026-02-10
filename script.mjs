@@ -22,7 +22,7 @@ function populateUserSelector() {
 
 function displayBookmarks () {
 	const selectedUser   = document.getElementById('user-select');
-	const bookmarkList = document.getElementById("bookmark-list");
+	const bookmarkList   = document.getElementById("bookmark-list");
 	const existData 	   = getData(selectedUser.value)
 	
 	bookmarkList.innerHTML = "";
@@ -42,6 +42,8 @@ function displayBookmarks () {
 					<p id="bookmark-timestamp"> ${bookmarkData.timestamp}</p>
 				</div>
 			`
+			
+			bookmarkList.appendChild(listItem);
 
 			// add event listener to like the bookmark and count the likes
         		const likesBookmark = listItem.querySelector(".like-bookmark");
@@ -62,8 +64,6 @@ function displayBookmarks () {
 					copyLinkBtn.textContent = "Copy Link";
 				}, 1000);
 			});
-
-			bookmarkList.appendChild(listItem);
 		});
 	
 	} else {

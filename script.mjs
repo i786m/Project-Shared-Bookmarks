@@ -23,7 +23,7 @@ function populateUserSelector() {
 function displayBookmarks () {
 	const selectedUser   = document.getElementById('user-select');
 	const bookmarkList   = document.getElementById("bookmark-list");
-	const existData 	   = getData(selectedUser.value)
+	const existData 	 = getData(selectedUser.value)
 	
 	bookmarkList.innerHTML = "";
 
@@ -90,17 +90,17 @@ function addBookmark(event) {
 	const userId = userSelector.value;
 
 	if (userId === 'Select a user') {
-		alert('Please select a user.');
+		showFeedback('Please select a user.', true);
 		return;
 	}
 
 	if (!url || !title || !description) {
-		alert('Please enter a URL, a title, and a description.');
+		showFeedback('Please enter a URL, a title, and a description.', true);
 		return;
 	}
 
 	if (!isValidUrl(url)) {
-		alert('Please enter a valid URL.');
+		showFeedback('Please enter a valid URL.', true);
 		return;
 	}
 
@@ -118,12 +118,22 @@ function addBookmark(event) {
 	titleInput.value = '';
 	descriptionInput.value = '';
 	displayBookmarks();
-	alert('Bookmark added successfully!');
+	showFeedback('Bookmark added successfully!');
 }
 
-function isValidUrl(url) {
+function showFeedback(message, isError = false) {
+	const feedback = document.getElementById('form-feedback');
+	feedback.textContent = message;
+	feedback.style.background = isError ? '#c0392b' : '#218838';
+	feedback.style.display = 'block';
+	setTimeout(() => {
+		feedback.style.display = 'none';
+	}, 3000);
+}
+
+function isValidUrl(string) {
 	try {
-		new URL(url.startsWith('http') ? url : 'https://' + url);
+		new URL(string.startsWith('http') ? string : 'https://' + string);
 		return true;
 	} catch {
 		return false;

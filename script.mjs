@@ -80,10 +80,10 @@ function displayBookmarks () {
 function addBookmark(event) {
 	event.preventDefault();
 
-	const url = document.getElementById('bookmark-url').value.trim();
-	const title = document.getElementById('bookmark-title').value.trim();
+	const url 		= document.getElementById('bookmark-url').value.trim();
+	const title 	= document.getElementById('bookmark-title').value.trim();
 	const description = document.getElementById('description').value.trim();
-	const userId = document.getElementById('user-select').value;
+	const userId 	= document.getElementById('user-select').value;
 
 	if (userId === 'Select a user') {
 		showFeedback('Please select a user.', true);

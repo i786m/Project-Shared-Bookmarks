@@ -31,8 +31,8 @@ function displayBookmarks() {
 	bookmarkList.innerHTML = '';
 
 	if (bookmarks && bookmarks.length > 0) {
-		// Accessibility: Added ARIA labels to buttons for screen reader clarity
-		// Accessibility: Kept heading structure consistent (see index.html)
+		// accessibility: added ARIA labels to buttons for screen reader clarity
+		// accessibility: kept heading structure consistent (see index.html)
 
 		[...bookmarks].reverse().forEach((bookmark) => {
 			const listItem = document.createElement('li');
@@ -68,7 +68,7 @@ function displayBookmarks() {
 			});
 		});
 	} else {
-		// Accessibility: Use semantic markup and live region for no-data message
+		// accessibility: use semantic markup and live region for no-data message
 		const noData = document.createElement('div');
 		noData.className = 'no-data';
 		noData.setAttribute('role', 'status'); // Announces status changes
@@ -77,7 +77,7 @@ function displayBookmarks() {
 		bookmarkList.appendChild(noData);
 	}
 
-	// Accessibility: Add aria-live to bookmark list for screen reader updates
+	// accessibility: add aria-live to bookmark list for screen reader updates
 	document
 		.getElementById('bookmark-list')
 		.setAttribute('aria-live', 'polite');

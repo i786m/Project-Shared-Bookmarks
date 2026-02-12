@@ -1,6 +1,6 @@
 import { getUserIds, getData, setData } from './storage.mjs';
 
-function populateUserSelector() {
+export function populateUserSelector() {
 	const users = getUserIds();
 	const userSelector = document.getElementById('user-select');
 
@@ -20,7 +20,7 @@ function populateUserSelector() {
 	});
 }
 
-function getSortedBookmarks(userId) {
+export function getSortedBookmarks(userId) {
 	const bookmarks = getData(userId) || [];
 	const sortedBookmarks = [...bookmarks].sort((a, b) => {
 		return new Date(b.timestamp) - new Date(a.timestamp);
@@ -28,7 +28,7 @@ function getSortedBookmarks(userId) {
 	return sortedBookmarks;
 }
 
-function displayBookmarks() {
+export function displayBookmarks() {
 	const userId = document.getElementById('user-select').value;
 	const bookmarkList = document.getElementById('bookmark-list');
 	const bookmarksListTitle = document.getElementById('bookmarks-list-title');
@@ -92,7 +92,17 @@ function displayBookmarks() {
 		.setAttribute('aria-live', 'polite');
 }
 
-function addBookmark(event) {
+export function createBookmark(url, title, description) {
+	return {
+		url,
+		title,
+		description,
+		likes: 0,
+		timestamp: new Date().toLocaleString(),
+	};
+}
+
+export function addBookmark(event) {
 	event.preventDefault();
 
 	const url = document.getElementById('bookmark-url').value.trim();
@@ -116,13 +126,7 @@ function addBookmark(event) {
 	}
 
 	const userBookmarks = getData(userId) || [];
-	const newBookmark = {
-		url,
-		title,
-		description,
-		likes: 0,
-		timestamp: new Date().toLocaleString(),
-	};
+	const newBookmark = createBookmark(url, title, description);
 	userBookmarks.push(newBookmark);
 	setData(userId, userBookmarks);
 	event.target.reset();
@@ -130,7 +134,7 @@ function addBookmark(event) {
 	showFeedback('Bookmark added successfully!');
 }
 
-function showFeedback(message, isError = false) {
+export function showFeedback(message, isError = false) {
 	const feedback = document.getElementById('form-feedback');
 	feedback.textContent = message;
 	feedback.style.background = isError ? '#c0392b' : '#218838';
@@ -140,7 +144,7 @@ function showFeedback(message, isError = false) {
 	}, 3000);
 }
 
-function isValidUrl(string) {
+export function isValidUrl(string) {
 	try {
 		new URL(string.startsWith('http') ? string : 'https://' + string);
 		return true;
@@ -149,7 +153,7 @@ function isValidUrl(string) {
 	}
 }
 
-function setupEventListeners() {
+export function setupEventListeners() {
 	const addBookmarkForm = document.getElementById('add-bookmark-form');
 	addBookmarkForm.addEventListener('submit', addBookmark);
 
@@ -157,7 +161,11 @@ function setupEventListeners() {
 	userSelector.addEventListener('change', displayBookmarks);
 }
 
-window.onload = function () {
+export function setup() {
 	populateUserSelector();
 	setupEventListeners();
-};
+}
+
+if (typeof window !== 'undefined') {
+	window.onload = setup;
+}

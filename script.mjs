@@ -38,9 +38,7 @@ export function displayBookmarks() {
 	bookmarkList.innerHTML = '';
 
 	if (sortedBookmarks && sortedBookmarks.length > 0) {
-		// accessibility: added ARIA labels to buttons for screen reader clarity
-		// accessibility: kept heading structure consistent (see index.html)
-
+	
 		sortedBookmarks.forEach((bookmark) => {
 			const listItem = document.createElement('li');
 			listItem.innerHTML = `
@@ -77,16 +75,15 @@ export function displayBookmarks() {
 			});
 		});
 	} else {
-		// accessibility: use semantic markup and live region for no-data message
+		const noDataListItem = document.createElement('li');
+		bookmarkList.appendChild(noDataListItem);	
 		const noData = document.createElement('div');
 		noData.className = 'no-data';
-		noData.setAttribute('role', 'status'); // Announces status changes
-		noData.setAttribute('aria-live', 'polite'); // Screen readers will announce updates
+		noData.setAttribute('role', 'status'); 
+		noData.setAttribute('aria-live', 'polite'); 
 		noData.textContent = 'There are no bookmarks for this user yet!';
-		bookmarkList.appendChild(noData);
+		noDataListItem.appendChild(noData);
 	}
-
-	// accessibility: add aria-live to bookmark list for screen reader updates
 	document
 		.getElementById('bookmark-list')
 		.setAttribute('aria-live', 'polite');

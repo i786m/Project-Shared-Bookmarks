@@ -34,8 +34,8 @@ export function displayBookmarks() {
 	const bookmarksListTitle = document.getElementById('bookmarks-list-title');
 	const sortedBookmarks = getSortedBookmarks(userId);
 
-	bookmarksListTitle.textContent = `Bookmarks for User ${userId}`;
 	bookmarkList.innerHTML = '';
+	bookmarksListTitle.textContent = `Bookmarks for User ${userId}`;
 
 	if (sortedBookmarks && sortedBookmarks.length > 0) {
 	

@@ -1,8 +1,26 @@
 {
-  "name": "project-shared-bookmarks",
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "test": "node --test"
-  }
+	"name": "project-shared-bookmarks",
+	"version": "1.0.0",
+	"type": "module",
+	"main": "script.mjs",
+	"scripts": {
+		"test": "cd __tests__ && node app.test.js"
+	},
+	"description": "A web app that allows users to share bookmarks using local Storage for persistence",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/i786m/Piscine-Sprint-1-Project-Shared-Bookmarks.git"
+	},
+	"keywords": [
+		"bookmarks",
+		"web",
+		"localStorage",
+		"sharing",
+		"project"
+	],
+	"contributors": [
+		"Beko Meigag",
+		"Imran Mohamed"
+	],
+	"license": "ISC"
 }

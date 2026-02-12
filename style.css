@@ -343,4 +343,8 @@ header{
 .no-data{
       font-size: 20px;
       font-weight: 500;
+      color: #888;
+      font-weight: bolder;
+      text-align: center;
+      padding: 40px 0;
 }
